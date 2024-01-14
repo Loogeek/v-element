@@ -1,7 +1,7 @@
 <template>
   <div>
-    <Button ref="buttonRef" @click="open" type="danger">Test Button</Button>
-    <Button plant @click="close">Plain Button</Button>
+    <Button ref="buttonRef" @click="buttonClick" type="danger">Test Button</Button>
+    <Button plant>Plain Button</Button>
     <Button round>Round Button</Button>
     <Button circle>VK</Button>
     <Button disabled>Disabled Button</Button><br/><br/>
@@ -28,6 +28,10 @@ import type {ButtonInstance} from '@/components/Button/types'
 import Button from './components/Button/Button.vue'
 
 const buttonRef = ref<ButtonInstance | null>(null)
+
+const buttonClick = () => {
+  console.log('button clicked')
+}
 
 onMounted(() => {
   if (buttonRef.value) {
