@@ -1,6 +1,7 @@
 <template>
   <button
     class="v-button"
+    ref="buttonRef"
     :class="{
       [`v-button--${type}`]: type,
       [`v-button--${size}`]: size,
@@ -18,16 +19,19 @@
   </button>
 </template>
 <script setup lang="ts">
+import { ref } from 'vue';
 import type {ButtonProps} from './types'
 
 withDefaults(defineProps<ButtonProps>(), {
   nativeType: 'button',
 })
 
-// export default {
-  
-// }
+const buttonRef = ref<HTMLElement | null>(null)
+
+defineExpose({
+  ref: buttonRef
+})
 </script>
-<style lang="">
+<style scoped>
   
 </style>

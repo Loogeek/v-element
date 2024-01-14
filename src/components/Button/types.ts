@@ -14,3 +14,7 @@ export interface ButtonProps {
   icon?: string;
   loading?: boolean;
 }
+
+export interface ButtonInstance {
+  ref: HTMLButtonElement
+}

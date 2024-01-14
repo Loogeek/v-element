@@ -23,7 +23,17 @@
 </template>
 
 <script setup lang="ts">
+import { ref, onMounted } from 'vue';
+import type {ButtonInstance} from '@/components/Button/types'
 import Button from './components/Button/Button.vue'
+
+const buttonRef = ref<ButtonInstance | null>(null)
+
+onMounted(() => {
+  if (buttonRef.value) {
+    console.log(buttonRef.value.ref)
+  }
+})
 </script>
 
 <style scoped>
