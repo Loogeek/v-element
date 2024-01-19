@@ -25,7 +25,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import type {ButtonInstance} from '@/components/Button/types'
-import Button from './components/Button/Button.vue'
+import Button from './components/Button'
 
 const buttonRef = ref<ButtonInstance | null>(null)
 
