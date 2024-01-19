@@ -26,6 +26,10 @@ withDefaults(defineProps<ButtonProps>(), {
   nativeType: 'button',
 })
 
+defineOptions({
+  name: 'v-button'
+})
+
 const buttonRef = ref<HTMLElement | null>(null)
 
 defineExpose({
