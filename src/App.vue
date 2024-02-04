@@ -22,7 +22,7 @@
   </div>
 
   <div>
-    <Collapse>
+    <Collapse accordion>
       <CollapseItem name="a" title="title a">
         content a
       </CollapseItem>
