@@ -7,6 +7,11 @@ export interface CollapseProps {
   accordion?: boolean
 }
 
+export interface CollapseEmits {
+  (e: 'update:modelValue', values: NameType[]): void
+  (e: 'change', values: NameType[]): void
+}
+
 export interface CollapseItemProps {
   name: NameType
   title?: string

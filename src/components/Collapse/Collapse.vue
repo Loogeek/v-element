@@ -5,8 +5,8 @@
 </template>
 
 <script setup lang="ts">
-import { ref, provide } from 'vue'
-import type { CollapseProps, NameType } from './types'
+import { ref, provide, watch } from 'vue'
+import type { CollapseEmits, CollapseProps, NameType } from './types'
 import { collapseContextKey } from './types'
 
 defineOptions({
@@ -14,11 +14,18 @@ defineOptions({
 })
 
 const props = defineProps<CollapseProps>()
+const emits = defineEmits<CollapseEmits>()
 const activeNames = ref<NameType[]>(props.modelValue || [])
 
-const handleItemClick = (activateName: NameType) => {
-  console.log("🚀 ~ handleItemClick ~ activateName:", activateName)
+watch(() => props.modelValue, () => {
+  activeNames.value = props.modelValue!
+})
 
+if (props.accordion && activeNames.value.length > 1) {
+  console.warn('accordion mode should only have one active item')
+}
+
+const handleItemClick = (activateName: NameType) => {
   let _activeNames = [...activeNames.value]
 
   if (props.accordion) {
@@ -34,8 +41,10 @@ const handleItemClick = (activateName: NameType) => {
     }
   }
 
-
   activeNames.value = _activeNames
+
+  emits('update:modelValue', _activeNames)
+  emits('change', _activeNames)
 }
 
 provide(collapseContextKey, {

@@ -22,7 +22,7 @@
   </div>
 
   <div>
-    <Collapse accordion>
+    <Collapse accordion v-model="openedValue">
       <CollapseItem name="a" title="title a">
         content a
       </CollapseItem>
@@ -31,6 +31,19 @@
       </CollapseItem>
       <CollapseItem name="c" title="title c" disabled>
         content c
+      </CollapseItem>
+    </Collapse>
+
+    <Collapse v-model="openedValue">
+      <CollapseItem name="a" title="Title A">
+        <h1>headline title</h1>
+        <div> this is content a aaa </div>
+      </CollapseItem>
+      <CollapseItem name="b" title="Title B">
+        <div> this is bbbbb test </div>
+      </CollapseItem>
+      <CollapseItem name="c" title="Disabled Title" disabled>
+        <div> this is cccc test </div>
       </CollapseItem>
     </Collapse>
   </div>
@@ -53,6 +66,8 @@ onMounted(() => {
     console.log(buttonRef.value.ref)
   }
 })
+
+const openedValue = ref(['a'])
 </script>
 
 <style scoped></style>
