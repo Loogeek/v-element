@@ -1,8 +1,5 @@
 <template>
-  <button
-    class="v-button"
-    ref="buttonRef"
-    :class="{
+  <button class="v-button" ref="buttonRef" :class="{
       [`v-button--${type}`]: type,
       [`v-button--${size}`]: size,
       'is-plain': plain,
@@ -10,17 +7,19 @@
       'is-circle': circle,
       'is-disabled': disabled,
       'is-loading': loading
-    }"
-    :disabled="disabled"
-    :autofocus="autofocus"
-    :type="nativeType"
-  >
-    <slot />
+    }" :disabled="disabled" :autofocus="autofocus" :type="nativeType">
+    <Icon icon="spinner" spin v-if="loading" />
+    <Icon :icon="icon" v-if="icon" />
+    <span>
+      <slot />
+
+    </span>
   </button>
 </template>
 <script setup lang="ts">
 import { ref } from 'vue';
-import type {ButtonProps} from './types'
+import Icon from '../Icon'
+import type { ButtonProps } from './types'
 
 withDefaults(defineProps<ButtonProps>(), {
   nativeType: 'button',
@@ -38,5 +37,4 @@ defineExpose({
 </script>
 <style scoped>
 /* @import './style.css' */
-  
 </style>

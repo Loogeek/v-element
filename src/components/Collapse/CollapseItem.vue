@@ -1,10 +1,11 @@
 <template>
   <div class="v-collapse-item" :class="{ 'is-disabled': disabled }">
     <div class="v-collapse-item__header" :class="{
-      'is-disabled': disabled,
-      'is-active': isActive
-    }" :id="`item-header-${name}`" @click="handleClick">
+    'is-disabled': disabled,
+    'is-active': isActive
+  }" :id="`item-header-${name}`" @click="handleClick">
       <slot name="title">{{ title }}</slot>
+      <Icon icon="angle-right" class="header-angle" />
     </div>
     <Transition name="slide" v-on="transitionEvents">
       <div class="v-collapse-item__wrapper" v-show="isActive">
@@ -19,6 +20,7 @@
 <script setup lang="ts">
 import { inject, computed } from 'vue'
 import { collapseContextKey, type CollapseItemProps } from './types'
+import Icon from '../Icon'
 
 defineOptions({
   name: 'VCollapseItem'

@@ -46,6 +46,11 @@
         <div> this is cccc test </div>
       </CollapseItem>
     </Collapse>
+
+    <div>
+      11111111
+      <Icon icon="spinner" />
+    </div>
   </div>
 </template>
 
@@ -54,6 +59,7 @@ import { ref, onMounted } from 'vue';
 import type { ButtonInstance } from '@/components/Button/types'
 import Button from './components/Button'
 import { Collapse, CollapseItem } from './components/Collapse'
+import Icon from './components/Icon'
 
 const buttonRef = ref<ButtonInstance | null>(null)
 
